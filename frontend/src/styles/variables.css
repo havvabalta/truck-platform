@@ -1,0 +1,48 @@
+:root {
+  /* ============================================================
+     TEMPLATE (Fabrika) Varsayılanları
+     ------------------------------------------------------------
+     Bu değerler, aktif sitenin theme.js'inden gelen CSS
+     değişkenleriyle EZİLEBİLİR.
+
+       var(--primary, #f97316)
+         ├─ --primary            : theme.js'ten gelir (aktif site)
+         └─ #f97316              : hiç tema yoksa kullanılan fabrika varsayılanı
+
+     App.js, theme.js'teki değerleri :root'a --primary-color,
+     --secondary-color vb. olarak enjekte eder ve buradaki
+     referanslar otomatik o değerleri kullanır.
+     ============================================================ */
+
+  --primary: var(--primary-color, #f97316);
+  --primary-dark: var(--primary-hover, #ea580c);
+
+  --secondary: var(--secondary-color, #0f172a);
+  --secondary-light: var(--secondary-light-color, #1e293b);
+
+  --accent: var(--accent-color, #22c55e);
+
+  --background: #f8fafc;
+  --surface: #ffffff;
+
+  --text: var(--text-color, #0f172a);
+  --text-light: #64748b;
+
+  --border: #e2e8f0;
+
+  --container: 1280px;
+
+  --section-space: 120px;
+
+  --radius-sm: 12px;
+  --radius-md: var(--border-radius, 20px);
+  --radius-lg: 28px;
+
+  --shadow: 0 15px 50px rgba(15, 23, 42, 0.08);
+
+  --transition: 0.3s ease;
+
+  --font-sans: var(--font-family, system-ui, -apple-system, sans-serif);
+  --font-main: var(--font-family, "Plus Jakarta Sans", system-ui, sans-serif);
+  --container-width: var(--container, 1280px);
+}

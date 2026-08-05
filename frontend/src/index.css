@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  background-color: #0b0f17;
+  color: #f8fafc;
+}
+
+/* ⚡ Sarı DİKKAT ÇEKİCİ Buton Animasyonu */
+.pulse-gold {
+  animation: pulse-gold-anim 2.2s infinite;
+}
+
+@keyframes pulse-gold-anim {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.6); }
+  70% { transform: scale(1.03); box-shadow: 0 0 0 14px rgba(251, 191, 36, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+}
+
+/* 💬 Yeşil WhatsApp Buton Animasyonu */
+.pulse-green {
+  animation: pulse-green-anim 2.2s infinite;
+}
+
+@keyframes pulse-green-anim {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  70% { transform: scale(1.03); box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* Glassmorphism Kartlar & Form Elemanları */
+.glass-box {
+  background: rgba(18, 24, 38, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #fbbf24;
+  background: rgba(255, 255, 255, 0.1);
+}

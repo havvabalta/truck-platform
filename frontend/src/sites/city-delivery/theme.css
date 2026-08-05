@@ -1,0 +1,31 @@
+/* ============================================================
+   sites/city-delivery/theme.css
+   ============================================================
+   Bu dosya city-delivery sitesine ÖZEL tasarım override'larıdır.
+   Fabrikanın (templates / global.css) varsayılan stillerini
+   ezmek / özelleştirmek için kullanılır.
+
+   NOT: Bu dosya yalnızca bu site aktifken yüklenir (App.js).
+   ============================================================ */
+
+
+.hero {
+  min-height: 92vh;
+}
+
+
+.service-card,
+.feature-card,
+.fleet-card {
+  border-radius: var(--border-radius, 16px);
+}
+
+
+.primary-btn {
+  box-shadow: 0 4px 18px rgba(249, 115, 22, 0.4);
+}
+
+
+.navbar {
+  border-bottom: 1px solid rgba(249, 115, 22, 0.25);
+}

@@ -1,0 +1,28 @@
+/* ============================================================
+
+   Lowbed / ağır nakliye sitesine özel tasarım override'ları.
+
+   ============================================================ */
+
+.hero {
+  min-height: 94vh;
+}
+
+.service-card,
+.feature-card,
+.fleet-card {
+  border-radius: var(--border-radius, 18px);
+}
+
+.primary-btn {
+  box-shadow: 0 4px 18px rgba(217, 119, 6, 0.4);
+}
+
+.navbar {
+  border-bottom: 2px solid rgba(217, 119, 6, 0.3);
+}
+
+.section-title span {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
