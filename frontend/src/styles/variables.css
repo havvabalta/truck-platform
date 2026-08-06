@@ -4,16 +4,7 @@
      ------------------------------------------------------------
      Bu değerler, aktif sitenin theme.js'inden gelen CSS
      değişkenleriyle EZİLEBİLİR.
-
-       var(--primary, #f97316)
-         ├─ --primary            : theme.js'ten gelir (aktif site)
-         └─ #f97316              : hiç tema yoksa kullanılan fabrika varsayılanı
-
-     App.js, theme.js'teki değerleri :root'a --primary-color,
-     --secondary-color vb. olarak enjekte eder ve buradaki
-     referanslar otomatik o değerleri kullanır.
-     ============================================================ */
-
+     ============================================================ */   
   --primary: var(--primary-color, #f97316);
   --primary-dark: var(--primary-hover, #ea580c);
 

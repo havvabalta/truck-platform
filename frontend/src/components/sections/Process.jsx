@@ -1,5 +1,6 @@
 import SectionHeader from "../ui/SectionHeader";
 import Card from "../ui/Card";
+import Reveal from "../ui/Reveal";
 
 export default function Process({ data }) {
   if (!data?.items?.length) return null;
@@ -7,21 +8,25 @@ export default function Process({ data }) {
   return (
     <section id="process" className="process">
       <div className="container">
-        <SectionHeader 
-          badge={data.badge} 
-          title={data.title} 
-          subtitle={data.subtitle} 
-        />
+        <Reveal>
+          <SectionHeader
+            badge={data.badge}
+            title={data.title}
+            subtitle={data.subtitle}
+          />
+        </Reveal>
 
-<div className="process-grid">
+        <div className="process-grid">
           {data.items.map((item, index) => (
-            <Card key={index} className="process-card">
-              <span className="process-step-badge">
-                {item.step || `0${index + 1}`}
-              </span>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </Card>
+            <Reveal key={index} delay={index + 1}>
+              <Card className="process-card">
+                <span className="process-step-badge">
+                  {item.step || `0${index + 1}`}
+                </span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </Card>
+            </Reveal>
           ))}
         </div>
       </div>

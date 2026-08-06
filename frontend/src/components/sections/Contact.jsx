@@ -65,14 +65,14 @@ export default function Contact({ data }) {
               )}
             </div>
 
-            {company?.whatsapp && (
+        {company?.whatsapp && (
               <Button
                 href={whatsappHref}
                 variant="whatsapp"
                 className="w-full"
                 icon={<Icon name="whatsapp" />}
               >
-                WhatsApp'tan Ulaşın
+                WhatsApp
               </Button>
             )}
           </Card>
@@ -82,7 +82,7 @@ export default function Contact({ data }) {
             <form onSubmit={(e) => e.preventDefault()}>
               <div className="form-group">
                 <label>Ad Soyad</label>
-                <input type="text" placeholder="Örn: Ahmet Yılmaz" required />
+                <input type="text" placeholder="Örn: Burak Akyıldız" required />
               </div>
 
               <div className="form-group">
@@ -95,8 +95,13 @@ export default function Contact({ data }) {
                 <textarea rows="4" placeholder="Taşınacak yük, nereden nereye vs." required></textarea>
               </div>
 
-              <Button type="submit" variant="primary" className="w-full" icon={<Icon name="quote" />}>
-                Teklif İsteyin
+<Button
+                type="submit"
+                variant="primary"
+                icon={<Icon name="quote" size={18} />}
+                className="w-full"
+              >
+                Teklif Al
               </Button>
             </form>
           </Card>

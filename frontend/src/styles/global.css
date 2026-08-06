@@ -21,7 +21,7 @@ html {
     sans-serif
   );
   background-color: var(--bg-main, #f8fafc);
-  color: var(--text-main, #0f172a);
+  color: var(--text-color, #0f172a);
   line-height: var(--lh-body, 1.6);
   -webkit-text-size-adjust: 100%;
 }
@@ -126,7 +126,6 @@ section:nth-child(even) {
 .hero.section {
   background-color: transparent !important;
 }
-
 /* Arka plan görseli üzerine koyu gölge (gradient overlay) */
 .hero-overlay {
   position: absolute;
@@ -928,40 +927,72 @@ section:nth-child(even) {
 }
 
 /* ==========================================================================
-   7. NAVBAR TASARIMI (Cam Efektli & Şık)
+   7. NAVBAR TASARIMI (Sticky Cam Efektli + Mobil Hamburger Menü)
    ========================================================================== */
 .navbar {
-  position: absolute;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 1rem 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.98) 0%,
+    rgba(15, 23, 42, 0.92) 100%
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.navbar-scrolled {
+  background: linear-gradient(
+    180deg,
+    rgba(11, 17, 32, 1) 0%,
+    rgba(11, 17, 32, 0.98) 100%
+  );
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
 .navbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 84px;
+  gap: 1rem;
+}
+
+.navbar-inner .logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .navbar-inner .logo img {
-  height: 135px;
+  height: 72px;
   width: auto;
   filter: brightness(0) invert(1);
+  transition: height 0.3s ease;
+}
+
+.navbar-scrolled .navbar-inner .logo img {
+  height: 58px;
 }
 
 .navbar-inner .logo span {
   color: #ffffff;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 800;
+  white-space: nowrap;
 }
 
 .navbar-links {
   display: flex;
-  gap: clamp(1.25rem, 2.5vw, 2.75rem);
+  gap: clamp(1rem, 2vw, 2rem);
   align-items: center;
   flex-wrap: nowrap;
 }
@@ -972,11 +1003,33 @@ section:nth-child(even) {
   font-weight: 600;
   font-size: 0.95rem;
   white-space: nowrap;
+  padding: 0.4rem 0;
+  position: relative;
   transition: color 0.2s ease;
+}
+
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  border-radius: 2px;
+  background: var(--primary-color, #f97316);
+  transition: width 0.25s ease;
 }
 
 .navbar-links a:hover {
   color: var(--primary-color, #f97316);
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+.navbar-links-mobile-cta {
+  display: none;
 }
 
 .navbar-actions {
@@ -989,7 +1042,7 @@ section:nth-child(even) {
 .navbar-cta {
   position: relative;
   overflow: hidden;
-  padding: 0.85rem 1.75rem;
+  padding: 0.8rem 1.6rem;
   font-size: 0.95rem;
   letter-spacing: 0.02em;
 }
@@ -1012,9 +1065,108 @@ section:nth-child(even) {
   transform: translateX(120%);
 }
 
+/* Hamburger Menü Butonu */
+.navbar-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.navbar-burger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: #ffffff;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.navbar-burger:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.navbar-burger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-burger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobil: hamburger menü + dikey panel */
 @media (max-width: 968px) {
   .navbar-cta {
-    padding: 0.7rem 1.25rem;
+    display: none;
+  }
+
+  .navbar-burger {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: rgba(15, 23, 42, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      max-height 0.35s ease,
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .navbar-links.open {
+    max-height: 520px;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 0.75rem 1.5rem 1.25rem;
+  }
+
+  .navbar-links a {
+    padding: 0.9rem 0;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .navbar-links a::after {
+    display: none;
+  }
+
+  .navbar-links-mobile-cta {
+    display: block;
+    padding-top: 1rem;
+  }
+
+  .navbar-links-mobile-cta .navbar-cta {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -1189,7 +1341,7 @@ section:nth-child(even) {
   border-radius: var(--border-radius-sm, 10px);
   font-size: 0.95rem;
   font-family: inherit;
-  color: var(--text-main, #0f172a);
+  color: var(--text-color, #0f172a);
   transition: all 0.25s ease;
   background-color: #f8fafc;
 }
@@ -1284,11 +1436,34 @@ select.form-control {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 2rem 1.5rem 1.5rem;
-  background: linear-gradient(0deg, rgba(15, 23, 42, 0.85), transparent);
+  padding: 3.5rem 1.75rem 1.75rem;
+  background: linear-gradient(
+    0deg,
+    rgba(15, 23, 42, 0.95) 0%,
+    rgba(15, 23, 42, 0.72) 45%,
+    rgba(15, 23, 42, 0.12) 100%
+  );
   color: #ffffff;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.6),
+    0 4px 14px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gallery-caption::before {
+  content: "";
+  flex-shrink: 0;
+  width: 4px;
+  height: 1.4em;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--primary-color, #f97316), #fbbf24);
+  box-shadow: 0 0 12px
+    color-mix(in srgb, var(--primary-color, #f97316) 70%, transparent);
 }
 
 .gallery-nav {
@@ -1353,6 +1528,33 @@ select.form-control {
 }
 
 /* ==========================================================================
+   8.75 TESTIMONIAL & COVERAGE İÇERİK STİLLERİ 
+   ========================================================================== */
+.testimonial-quote {
+  color: var(--text-muted, #64748b);
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+.testimonial-stars {
+  margin-bottom: 1rem;
+  color: var(--primary-color, #f97316);
+}
+.testimonial-author {
+  margin-top: auto;
+}
+.testimonial-author strong {
+  color: var(--secondary-color, #0f172a);
+  display: block;
+}
+.testimonial-author small {
+  color: var(--text-muted, #64748b);
+}
+.coverage-card {
+  text-align: center;
+  font-weight: 600;
+}
+
+/* ==========================================================================
    9. ANİMASYONLAR (Pulse & Efektler)
    ========================================================================== */
 .pulse-anim {
@@ -1373,88 +1575,6 @@ select.form-control {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
-}
-
-/* ==========================================================================
-   9.5 SABİT İLETİŞİM (Floating Contact) - Sağ Alt Köşe
-   ========================================================================== */
-.floating-contact {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  z-index: 2000;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: flex-end;
-}
-
-.floating-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.7rem;
-  border-radius: 999px;
-  text-decoration: none;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.9rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-  max-width: 52px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.floating-btn .floating-label {
-  opacity: 0;
-  max-width: 0;
-  transition:
-    opacity 0.25s ease,
-    max-width 0.25s ease;
-}
-
-.floating-btn:hover {
-  transform: translateY(-3px);
-  max-width: 260px;
-}
-
-.floating-btn:hover .floating-label {
-  opacity: 1;
-  max-width: 200px;
-}
-
-.floating-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.floating-whatsapp {
-  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-}
-
-.floating-whatsapp:hover {
-  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
-}
-
-.floating-phone {
-  background: linear-gradient(135deg, var(--primary-color, #f97316), #ea580c);
-}
-
-.floating-phone:hover {
-  box-shadow: 0 12px 30px rgba(249, 115, 22, 0.5);
-}
-
-.floating-email {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-}
-
-.floating-email:hover {
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.5);
 }
 
 /* ==========================================================================
@@ -1481,15 +1601,28 @@ select.form-control {
   .hero-buttons {
     justify-content: center;
   }
-
-  .navbar-links {
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gallery-slide img {
+    height: 320px;
+  }
+
+  .gallery-caption {
+    font-size: 1rem;
+    padding: 3rem 1.25rem 1.25rem;
+  }
+
+  .service-card-inner {
+    min-height: 260px;
+  }
+
+  .section-title h2 {
+    font-size: 1.7rem;
   }
 }
 
@@ -1505,5 +1638,188 @@ select.form-control {
   .primary-btn,
   .secondary-btn {
     width: 100%;
+  }
+
+  .navbar-inner {
+    min-height: 76px;
+  }
+
+  .navbar-inner .logo img {
+    height: 78px;
+  }
+
+  .navbar-inner .logo span {
+    font-size: 1.1rem;
+  }
+
+  .floating-contact {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* ==========================================================================
+   11. ÇARPIKI ENDÜSTRİYEL EFEKTLER (EVrensel Animasyon Altyapısı)
+   ========================================================================== */
+
+/* --- Kesik köşe (clipped corner) — endüstriyel pano hissi --- */
+.clip-corner {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% 100%,
+    18px 100%,
+    0 calc(100% - 18px)
+  );
+}
+
+/* --- Yumuşak yüzen öğe animasyonu (hero dekorasyonları) --- */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+.animate-float {
+  animation: float-y 5s ease-in-out infinite;
+}
+
+/* --- Hafif sallanma --- */
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+.animate-wobble {
+  animation: wobble 6s ease-in-out infinite;
+}
+
+/* --- Pulse halka (vurgu çemberi) --- */
+@keyframes ring-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(249, 115, 22, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+  }
+}
+.animate-ring {
+  animation: ring-pulse 2.4s infinite;
+}
+
+/* --- Hazard şerit (sarı-siyah çizgili) kaydırma --- */
+@keyframes hazard-slide {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 56px 0;
+  }
+}
+.hazard-strip {
+  height: 12px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #1c1917 0,
+    #1c1917 14px,
+    #facc15 14px,
+    #facc15 28px
+  );
+  background-size: 56px 100%;
+  animation: hazard-slide 1.2s linear infinite;
+}
+
+/* --- Marquee (kayan bant) --- */
+.marquee-bar {
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--bg-card, #ffffff);
+  color: var(--text-color, #111827);
+  padding: 0.8rem 0;
+  position: relative;
+  border-top: 1px solid var(--border-color, #e5e7eb);
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+.marquee-track {
+  display: inline-flex;
+  gap: 3rem;
+  width: max-content;
+  animation: marquee-scroll 22s linear infinite;
+  will-change: transform;
+  padding-right: 3rem;
+}
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track span {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+  white-space: nowrap;
+}
+.marquee-track .marquee-sep {
+  font-style: normal;
+  color: var(--primary-color, #2563eb);
+  margin-left: 3rem;
+}
+
+/* --- Scroll reveal (görünürde animasyon) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 {
+  transition-delay: 0.12s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.24s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.36s;
+}
+.reveal-delay-4 {
+  transition-delay: 0.48s;
+}
+.reveal-delay-5 {
+  transition-delay: 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .marquee-track,
+  .hazard-strip,
+  .animate-float,
+  .animate-wobble {
+    animation: none;
   }
 }

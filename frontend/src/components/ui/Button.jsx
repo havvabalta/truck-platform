@@ -2,40 +2,40 @@ export default function Button({
   children,
   href,
   variant = "primary",
-  onClick,
+  icon,
   className = "",
-  icon = null,
   type = "button",
 }) {
-  let baseClass = "primary-btn";
-  if (variant === "secondary") baseClass = "secondary-btn";
-  if (variant === "whatsapp") baseClass = "whatsapp-btn";
+  const variantClass =
+    {
+      primary: "primary-btn",
+      secondary: "secondary-btn",
+      whatsapp: "whatsapp-btn",
+    }[variant] || "primary-btn";
+
+  const classes = ["btn", variantClass, className]
+    .filter(Boolean)
+    .join(" ");
 
   const content = (
     <>
       {icon && <span className="btn-icon">{icon}</span>}
-      <span>{children}</span>
+      {children}
     </>
   );
 
   if (href) {
     return (
-      <a
-        href={href}
-        className={`${baseClass} ${className}`.trim()}
-      >
+      <a href={href} className={classes}>
         {content}
       </a>
     );
   }
 
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      className={`${baseClass} ${className}`.trim()}
-    >
+    <button type={type} className={classes}>
       {content}
     </button>
   );
 }
+

@@ -1,28 +1,405 @@
 /* ============================================================
-
+   sites/lowbed/theme.css
+   ============================================================
    Lowbed / ağır nakliye sitesine özel tasarım override'ları.
-
+   Sarı / amber endüstriyel kimlik — açık zemin, koyu okunur yazı.
    ============================================================ */
 
+/* --- HERO: sarı enerjik gradient + keskin çizgiler --- */
 .hero {
-  min-height: 94vh;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(253, 224, 71, 0.45),
+      transparent 42%
+    ),
+    linear-gradient(135deg, #facc15 0%, #f59e0b 55%, #d97706 100%);
+  color: #1c1917;
 }
 
-.service-card,
-.feature-card,
+.hero-content h1 {
+  color: #1c1917;
+  text-shadow: none;
+}
+
+.hero-content p {
+  color: rgba(28, 25, 23, 0.9);
+  text-shadow: none;
+}
+
+.hero-badge {
+  background: rgba(28, 25, 23, 0.12);
+  border: 1px solid rgba(28, 25, 23, 0.25);
+  color: #1c1917;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.hero-card {
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 2px solid rgba(28, 25, 23, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+/* --- HERO overlay'i temizle (sarı zemini göstermek için) --- */
+.hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(28, 25, 23, 0.25) 0%,
+    rgba(28, 25, 23, 0.1) 100%
+  );
+}
+
+/* --- STATS: sarı vurgulu ancak okunur (koyu ton) --- */
+.stats {
+  background: linear-gradient(135deg, #1c1917 0%, #292524 100%);
+}
+
+.stat-value {
+  background: linear-gradient(135deg, #fde68a 0%, #facc15 60%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #facc15;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ------------------------------------------------------------
+   KARTLAR — SIŞIRAZI ENDÜSTRİYEL TASARIM
+   Her kart tipi farklı dolgu renkli (renk kodlu bloklar) oldu.
+   Beyaz boş sayfa yerine sarı / amber / lime / antrasit kartlar.
+   ------------------------------------------------------------ */
+
+.process-card,
+.testimonial-card,
+.coverage-card,
+.faq-item {
+  border-radius: var(--border-radius, 10px);
+  background: #ffffff;
+  border: 1px solid #fde68a;
+  box-shadow: 0 12px 30px rgba(202, 138, 4, 0.12);
+}
+
+/* Hizmet kartları — sırasıyla sarı / amber / lime / antrasit */
+.service-card {
+  background: linear-gradient(160deg, #fef9c3 0%, #fde68a 100%);
+  border: 2px solid #facc15;
+  border-radius: 14px;
+  box-shadow: 0 14px 34px rgba(202, 138, 4, 0.2);
+  color: #1c1917;
+}
+
+.service-card:nth-child(2n) {
+  background: linear-gradient(160deg, #fef3c7 0%, #fcd34d 100%);
+  border-color: #f59e0b;
+}
+
+.service-card:nth-child(3n) {
+  background: linear-gradient(160deg, #ecfccb 0%, #a3e635 100%);
+  border-color: #65a30d;
+}
+
+.service-card:nth-child(4n) {
+  background: linear-gradient(160deg, #292524 0%, #1c1917 100%);
+  border-color: #f59e0b;
+  color: #ffffff;
+}
+
+/* Feature kartları — TEK TİP sarı, vurgu yazılarda */
+.feature-card {
+  background: linear-gradient(160deg, #facc15 0%, #f59e0b 100%);
+  border: 2px solid #1c1917;
+  border-radius: 14px;
+  color: #1c1917;
+  box-shadow: 0 14px 34px rgba(217, 119, 6, 0.28);
+}
+
+.feature-card h3 {
+  color: #1c1917;
+}
+
+.feature-card p {
+  color: #44403c;
+}
+
+/* Fleet kartları — sarı + siyah şeritli endüstriyel */
 .fleet-card {
-  border-radius: var(--border-radius, 18px);
+  background: linear-gradient(180deg, #facc15 0%, #f59e0b 100%);
+  border: 3px solid #1c1917;
+  border-radius: 14px;
+  color: #1c1917;
+  box-shadow: 0 14px 34px rgba(202, 138, 4, 0.25);
 }
 
+.service-card h3,
+.feature-card h3,
+.fleet-card h3,
+.process-card h3,
+.testimonial-card h4 {
+  color: inherit;
+}
+
+.service-card p,
+.feature-card p,
+.process-card p,
+.testimonial-card p {
+  color: inherit;
+  opacity: 0.85;
+}
+
+.service-icon,
+.feature-icon {
+  background: rgba(255, 255, 255, 0.55);
+  color: #1c1917;
+  border: 1px solid rgba(28, 25, 23, 0.15);
+}
+
+.service-card:nth-child(4n) .service-icon,
+.feature-card .feature-icon {
+  background: #1c1917;
+  color: #facc15;
+}
+
+.service-card:hover,
+.feature-card:hover,
+.fleet-card:hover {
+  transform: translateY(-6px) rotate(-0.5deg);
+  box-shadow: 0 20px 45px rgba(28, 25, 23, 0.3);
+}
+
+/* --- BUTONLAR: sarı üzerine koyu yazı --- */
 .primary-btn {
-  box-shadow: 0 4px 18px rgba(217, 119, 6, 0.4);
+  border-radius: var(--border-radius-sm, 8px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 800;
+  color: #1c1917 !important;
+  background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.35);
 }
 
-.navbar {
-  border-bottom: 2px solid rgba(217, 119, 6, 0.3);
+.primary-btn:hover {
+  color: #1c1917 !important;
+}
+
+/* --- SECTION BAŞLIKLARI --- */
+.section-title h2 {
+  color: #1c1917;
+  text-transform: uppercase;
 }
 
 .section-title span {
-  letter-spacing: 2px;
+  color: #d97706;
+  font-weight: 800;
+  letter-spacing: 3px;
   text-transform: uppercase;
+}
+
+.section-title h2::after {
+  background: linear-gradient(90deg, #facc15, #f59e0b);
+}
+
+.section-title p {
+  color: #57534e;
+}
+
+/* --- NAVBAR: sarı alt çizgi, koyu içerik --- */
+.navbar {
+  border-bottom: 3px solid #facc15;
+}
+
+/* --- FAQ --- */
+.faq-item summary {
+  color: #1c1917;
+}
+
+.faq-item p {
+  color: #57534e;
+}
+
+/* --- FOOTER: koyu antrasit, sarı vurgular --- */
+.footer {
+  background: linear-gradient(180deg, #1c1917 0%, #141210 100%);
+  border-top: 3px solid #f59e0b;
+}
+
+/* ============================================================
+   LOWBED — ÇARPIKI ENDÜSTRİYEL EK EFEKTLER
+   ============================================================ */
+
+/* --- HERO hazard şeritler (üst ve alt) --- */
+.hero-hazard-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 10px;
+}
+.hero-hazard-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 10px;
+}
+
+/* --- HERO dekoratif öğeler --- */
+.hero-deco {
+  position: absolute;
+  z-index: 1;
+  color: rgba(28, 25, 23, 0.18);
+  font-size: 7rem;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+.hero-deco-ton {
+  top: 12%;
+  right: 8%;
+  font-size: 11rem;
+  opacity: 0.5;
+}
+.hero-deco-gear {
+  bottom: 18%;
+  right: 22%;
+  font-size: 4.5rem;
+  color: rgba(28, 25, 23, 0.28);
+}
+.hero-deco-box {
+  top: 22%;
+  left: 6%;
+  font-size: 3.5rem;
+  color: rgba(28, 25, 23, 0.25);
+}
+
+/* === Marquee bar lowbed override — sarı/siyah hazard kimlik === */
+.marquee-bar {
+  background: #1c1917;
+  border-top: 3px solid #facc15;
+  border-bottom: 3px solid #facc15;
+}
+.marquee-track span {
+  color: #fde68a;
+}
+
+/* === Stats bandına endüstriyel kesik köşe kartlar === */
+.stat-card-custom {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
+}
+
+/* === Bölüm başlık vurgusu: sol dikey sarı blok === */
+.section-title h2::before {
+  content: "";
+  position: absolute;
+  left: -1.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 2.2rem;
+  background: linear-gradient(180deg, #facc15, #f59e0b);
+}
+
+/* === Kartlara kesik köşe + hazard alt şerit === */
+.service-card,
+.feature-card,
+.fleet-card,
+.process-card {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 16px) 0,
+    100% 16px,
+    100% 100%,
+    16px 100%,
+    0 calc(100% - 16px)
+  );
+}
+
+/* === Hizmet kartlarında hover: sarı çerçeve parlaması === */
+.service-card:hover,
+.feature-card:hover,
+.fleet-card:hover {
+  border-color: #facc15;
+  box-shadow:
+    0 0 0 3px rgba(250, 204, 21, 0.35),
+    0 20px 45px rgba(28, 25, 23, 0.3);
+}
+
+/* === Fleet kartına şeritli üst bant === */
+.fleet-card::before {
+  content: "";
+  display: block;
+  height: 8px;
+  margin: calc(-1 * var(--card-padding, 1.75rem))
+    calc(-1 * var(--card-padding, 1.75rem)) 1.25rem;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #facc15 0,
+    #facc15 12px,
+    #1c1917 12px,
+    #1c1917 24px
+  );
+}
+
+/* === Galeri çerçevesi: sarı kenarlık + köşe bantları === */
+.gallery-slider {
+  border: 3px solid #facc15;
+  box-shadow: 0 20px 50px rgba(202, 138, 4, 0.25);
+}
+
+/* === İletişim kartı: sarı sol şerit === */
+.contact-info-card {
+  border-left: 6px solid #facc15 !important;
+}
+
+/* === Buton hover: hazard şerit kaydırma efekti === */
+.primary-btn {
+  position: relative;
+  overflow: hidden;
+}
+.primary-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(28, 25, 23, 0.25) 0,
+    rgba(28, 25, 23, 0.25) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  transform: translateX(-120%);
+  transition: transform 0.5s ease;
+}
+.primary-btn:hover::after {
+  transform: translateX(120%);
+}
+
+/* === Footer altına hazard şerit === */
+.footer::after {
+  content: "";
+  display: block;
+  height: 10px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #facc15 0,
+    #facc15 14px,
+    #1c1917 14px,
+    #1c1917 28px
+  );
 }

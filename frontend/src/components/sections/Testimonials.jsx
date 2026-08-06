@@ -1,5 +1,6 @@
 import SectionHeader from "../ui/SectionHeader";
 import Card from "../ui/Card";
+import Reveal from "../ui/Reveal";
 
 export default function Testimonials({ data }) {
   if (!data?.items?.length) return null;
@@ -7,26 +8,30 @@ export default function Testimonials({ data }) {
   return (
     <section id="testimonials" className="testimonials">
       <div className="container">
-        <SectionHeader 
-          badge={data.badge} 
-          title={data.title} 
-          subtitle={data.subtitle} 
-        />
+        <Reveal>
+          <SectionHeader
+            badge={data.badge}
+            title={data.title}
+            subtitle={data.subtitle}
+          />
+        </Reveal>
 
-        <div className="testimonials-grid">
+<div className="testimonials-grid">
           {data.items.map((item, index) => (
-            <Card key={index} className="testimonial-card">
-              <div style={{ marginBottom: '1rem' }}>
-                {"⭐".repeat(item.rating || 5)}
-              </div>
-              <p style={{ color: 'var(--text-muted)', fontStyle: 'italic', marginBottom: '1.25rem' }}>
-                "{item.comment}"
-              </p>
-              <div>
-                <strong style={{ color: 'var(--secondary-color)', display: 'block' }}>{item.name}</strong>
-                {item.company && <small style={{ color: 'var(--text-muted)' }}>{item.company}</small>}
-              </div>
-            </Card>
+            <Reveal key={index} delay={index + 1}>
+              <Card className="testimonial-card">
+                <div className="testimonial-stars">
+                  {"⭐".repeat(item.rating || 5)}
+                </div>
+                <p className="testimonial-quote">
+                  "{item.comment}"
+                </p>
+                <div className="testimonial-author">
+                  <strong>{item.name}</strong>
+                  {item.company && <small>{item.company}</small>}
+                </div>
+              </Card>
+            </Reveal>
           ))}
         </div>
       </div>

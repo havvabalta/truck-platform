@@ -13,38 +13,42 @@ import Contact from "../components/sections/Contact";
 import CTA from "../components/sections/CTA";
 import Footer from "../components/sections/Footer";
 import FloatingContact from "../components/sections/FloatingContact";
+import Marquee from "../components/sections/Marquee";
 
 import siteConfig from "../config/siteConfig";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
+      <Navbar data={siteConfig.navbar} />
 
       <Hero data={siteConfig.hero} />
 
+      
       <Stats data={siteConfig.stats} />
 
+      <Marquee data={siteConfig.marquee} />
       <Services data={siteConfig.services} />
 
       <Features data={siteConfig.features} />
+      
        <Gallery data={{ gallery: siteConfig.media?.gallery }} />
 
       <Fleet data={siteConfig.fleet} />
 
       <Process data={siteConfig.process} />
 
-<Testimonials data={siteConfig.testimonials} />
+      <Testimonials data={siteConfig.testimonials} />
 
       <Coverage data={siteConfig.coverage} />
 
-     
-
-<FAQ data={siteConfig.faq} />
+      <FAQ data={siteConfig.faq} />
 
       <Contact data={siteConfig.contact} />
 
-      <CTA data={siteConfig.cta} />
+      {siteConfig.cta ? (
+        <CTA data={siteConfig.cta} />
+      ) : null}
 
       <Footer data={siteConfig.footer} />
 

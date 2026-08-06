@@ -1,5 +1,3 @@
-// sites/lowbed/data.js
-// Lowbed / ağır nakliye sitesine ait TÜM içerik.
 import heroImage from "../../assets/images/hero.jpg";
 import logo from "../../assets/icons/logo.png";
 import gallery1 from "../../assets/images/gallery1.jpg";
@@ -32,6 +30,16 @@ const data = {
       { src: gallery3, title: "Proje taşımacılığı" },
     ],
   },
+
+  marquee: [
+    "Ağır Nakliyat",
+    "Lowbed Kiralama",
+    "Gabari Dışı Taşıma",
+    "Proje Taşımacılığı",
+    "İş Makinesi Nakliyesi",
+    "150 Ton Kapasite",
+    "Eskort & Yasal İzin",
+  ],
 
   company: {
     phone: "0555 000 00 00",
@@ -250,7 +258,9 @@ const data = {
     address: "İstanbul",
   },
 
-  cta: {
+  // CTA bölümü şu an kullanılmıyor (Home.jsx içinde null ise render edilmez).
+  cta: null,
+  ctaHidden: {
     title: "Ağır Yükünüz İçin Hemen Teklif Alın",
     subtitle:
       "Lowbed ve ağır nakliye ihtiyaçlarınız için uzman ekibimiz sizinle hızlıca iletişime geçsin.",

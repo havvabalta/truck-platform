@@ -28,6 +28,16 @@ const data = {
     ],
   },
 
+   marquee: [
+    "Ağır Nakliyat",
+    "Lowbed Kiralama",
+    "Gabari Dışı Taşıma",
+    "Proje Taşımacılığı",
+    "İş Makinesi Nakliyesi",
+    "150 Ton Kapasite",
+    "Eskort & Yasal İzin",
+  ],
+  
   media: {
     logo: logo,
 

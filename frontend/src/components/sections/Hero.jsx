@@ -1,6 +1,6 @@
-// src/components/sections/Hero.jsx
 import siteConfig from "../../config/siteConfig";
 import Icon from "../ui/Icons";
+import Button from "../ui/Button";
 
 export default function Hero({ data }) {
   if (!data) return null;
@@ -15,14 +15,25 @@ export default function Hero({ data }) {
       className="hero"
       style={{ backgroundImage: `url(${heroImg})` }}
     >
-      <div className="hero-overlay" />
+<div className="hero-overlay" />
+      <div className="hazard-strip hero-hazard-top" />
+      <div className="hazard-strip hero-hazard-bottom" />
 
       <div className="container hero-content">
-        {data.badge && <span className="hero-badge">{data.badge}</span>}
         <h1>{data.title}</h1>
         <p>{data.subtitle}</p>
 
-        <div className="hero-buttons">
+<div className="hero-buttons">
+          {data.primaryButton && (
+            <Button
+              href={data.primaryButton.href}
+              variant="primary"
+              icon={<Icon name="quote" size={18} />}
+            >
+              {data.primaryButton.text}
+            </Button>
+          )}
+
           {company?.phone && (
             <a href={phoneHref} className="hero-phone-btn">
               <Icon name="phone" size={18} />
