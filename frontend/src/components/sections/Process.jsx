@@ -16,7 +16,7 @@ export default function Process({ data }) {
           />
         </Reveal>
 
-        <div className="process-grid">
+        <div className="process-grid adaptive-grid" data-layout={data.items.length >= 6 ? "three-columns" : "auto"}>
           {data.items.map((item, index) => (
             <Reveal key={index} delay={index + 1}>
               <Card className="process-card">

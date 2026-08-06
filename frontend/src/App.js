@@ -38,6 +38,43 @@ export default function App() {
         if (t[key]) root.style.setProperty(cssVar, t[key]);
       });
     }
+
+    const { site, hero, footer, media, seo = {} } = siteConfig;
+    const siteName = seo.title || site?.name || "Kurumsal web sitesi";
+    const description =
+      seo.description || footer?.description || hero?.subtitle || site?.slogan || "";
+    const canonicalUrl = seo.canonical || (site?.domain ? `https://${site.domain}` : "");
+    const setMeta = (selector, attributes) => {
+      let element = document.head.querySelector(selector);
+      if (!element) {
+        element = document.createElement("meta");
+        document.head.appendChild(element);
+      }
+      Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+    };
+
+    document.documentElement.lang = seo.locale || "tr";
+    document.title = site?.slogan ? `${siteName} | ${site.slogan}` : siteName;
+    if (description) {
+      setMeta('meta[name="description"]', { name: "description", content: description });
+      setMeta('meta[property="og:description"]', { property: "og:description", content: description });
+    }
+    setMeta('meta[property="og:title"]', { property: "og:title", content: document.title });
+    setMeta('meta[property="og:type"]', { property: "og:type", content: "website" });
+    if (canonicalUrl) {
+      let canonical = document.head.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement("link");
+        canonical.rel = "canonical";
+        document.head.appendChild(canonical);
+      }
+      canonical.href = canonicalUrl;
+      setMeta('meta[property="og:url"]', { property: "og:url", content: canonicalUrl });
+    }
+    if (media?.favicon) {
+      const favicon = document.head.querySelector('link[rel="icon"]');
+      if (favicon) favicon.href = media.favicon;
+    }
   }, []);
 
   return <Home />;

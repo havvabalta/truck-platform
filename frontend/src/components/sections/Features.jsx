@@ -16,7 +16,7 @@ export default function Features({ data }) {
           />
         </Reveal>
 
-        <div className="features-grid">
+        <div className="features-grid adaptive-grid" data-layout={data.items.length >= 6 ? "three-columns" : "auto"}>
           {data.items.map((item, index) => (
             <Reveal key={index} delay={(index % 4) + 1}>
               <Card className="feature-card">

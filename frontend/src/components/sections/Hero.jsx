@@ -6,7 +6,7 @@ export default function Hero({ data }) {
   if (!data) return null;
 
   const heroImg = data.image || siteConfig.media?.heroImage || "hero.jpg";
-  const company = siteConfig.company;
+  const {company} = siteConfig;
   const whatsappHref = `https://wa.me/${company?.whatsapp}`;
   const phoneHref = `tel:${company?.phone?.replace(/\s+/g, "")}`;
 
@@ -16,9 +16,8 @@ export default function Hero({ data }) {
       style={{ backgroundImage: `url(${heroImg})` }}
     >
 <div className="hero-overlay" />
-      <div className="hazard-strip hero-hazard-top" />
-      <div className="hazard-strip hero-hazard-bottom" />
-
+      {data.showHazard && <div className="hazard-strip hero-hazard-top" />}
+      {data.showHazard && <div className="hazard-strip hero-hazard-bottom" />}
       <div className="container hero-content">
         <h1>{data.title}</h1>
         <p>{data.subtitle}</p>

@@ -1,405 +1,397 @@
-/* ============================================================
-   sites/lowbed/theme.css
-   ============================================================
-   Lowbed / ağır nakliye sitesine özel tasarım override'ları.
-   Sarı / amber endüstriyel kimlik — açık zemin, koyu okunur yazı.
-   ============================================================ */
+/* Lowbed / ağır nakliye: koyu operasyon zemini, güvenlik sarısı vurgular. */
 
-/* --- HERO: sarı enerjik gradient + keskin çizgiler --- */
+:root {
+  --lowbed-charcoal: #171717;
+  --lowbed-steel: #292929;
+  --lowbed-yellow: #f6c515;
+  --lowbed-yellow-soft: #fff4bf;
+  --lowbed-paper: #fffdf5;
+}
+
+/* HERO */
 .hero {
-  min-height: 100vh;
+  min-height: min(780px, 94vh);
+  background-color: var(--lowbed-charcoal);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-overlay {
   background:
-    radial-gradient(
-      circle at 85% 15%,
-      rgba(253, 224, 71, 0.45),
-      transparent 42%
-    ),
-    linear-gradient(135deg, #facc15 0%, #f59e0b 55%, #d97706 100%);
-  color: #1c1917;
+    linear-gradient(90deg, rgba(12, 12, 12, 0.86) 0%, rgba(12, 12, 12, 0.68) 48%, rgba(12, 12, 12, 0.25) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.34));
+}
+
+.hero-content {
+  max-width: 760px;
 }
 
 .hero-content h1 {
-  color: #1c1917;
-  text-shadow: none;
+  color: #fff;
+  max-width: 14ch;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+}
+
+.hero-content h1::after {
+  content: "";
+  display: block;
+  width: 76px;
+  height: 5px;
+  margin-top: 1.4rem;
+  background: var(--lowbed-yellow);
 }
 
 .hero-content p {
-  color: rgba(28, 25, 23, 0.9);
-  text-shadow: none;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 60ch;
 }
 
-.hero-badge {
-  background: rgba(28, 25, 23, 0.12);
-  border: 1px solid rgba(28, 25, 23, 0.25);
-  color: #1c1917;
+/* Hareketli güvenlik şeritleri yalnızca Lowbed hero'sunda kullanılır. */
+.hero-hazard-top,
+.hero-hazard-bottom {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 3;
+  height: 12px;
+}
+
+.hero-hazard-top {
+  top: 0;
+}
+
+.hero-hazard-bottom {
+  bottom: 0;
+}
+
+/* NAVIGATION + ACTIONS */
+.navbar,
+.navbar.navbar-scrolled {
+  background: rgba(23, 23, 23, 0.96);
+  border-bottom: 1px solid rgba(246, 197, 21, 0.72);
+}
+
+.navbar-links a {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.navbar-links a:hover,
+.navbar-links a:focus-visible {
+  color: var(--lowbed-yellow);
+}
+
+.primary-btn {
+  background: var(--lowbed-yellow);
+  color: #171717 !important;
+  border-radius: 4px;
+  box-shadow: none;
+  font-weight: 800;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  border-radius: 6px;
-  font-weight: 700;
 }
 
-.hero-card {
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.35);
-  border: 2px solid rgba(28, 25, 23, 0.2);
-  backdrop-filter: blur(8px);
+.primary-btn:hover,
+.primary-btn:focus-visible {
+  background: #ffda3c;
+  color: #171717 !important;
+  box-shadow: 0 8px 22px rgba(246, 197, 21, 0.24);
 }
 
-/* --- HERO overlay'i temizle (sarı zemini göstermek için) --- */
-.hero-overlay {
-  background: linear-gradient(
-    90deg,
-    rgba(28, 25, 23, 0.25) 0%,
-    rgba(28, 25, 23, 0.1) 100%
-  );
+.hero-phone-btn {
+  border-color: rgba(246, 197, 21, 0.55);
 }
 
-/* --- STATS: sarı vurgulu ancak okunur (koyu ton) --- */
+/* MARQUEE + STATS */
+.marquee-bar {
+  padding: 0.72rem 0;
+  background: var(--lowbed-charcoal);
+  border-top: 3px solid var(--lowbed-yellow);
+  border-bottom: 1px solid rgba(246, 197, 21, 0.38);
+}
+
+.marquee-track span,
+.marquee-track .marquee-sep {
+  color: var(--lowbed-yellow-soft);
+}
+
 .stats {
-  background: linear-gradient(135deg, #1c1917 0%, #292524 100%);
+  padding: 3.75rem 0;
+  background: var(--lowbed-charcoal);
+}
+
+.stat-card-custom {
+  min-height: 144px;
+  padding: 1.5rem 1rem !important;
+  background: var(--lowbed-steel) !important;
+  border: 1px solid rgba(246, 197, 21, 0.28) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+
+.stat-card-custom:hover {
+  border-color: var(--lowbed-yellow) !important;
+  background: #343434 !important;
+  transform: translateY(-4px);
 }
 
 .stat-value {
-  background: linear-gradient(135deg, #fde68a 0%, #facc15 60%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #facc15;
+  color: var(--lowbed-yellow);
+  -webkit-text-fill-color: currentColor;
+  filter: none;
 }
 
 .stat-label {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* ------------------------------------------------------------
-   KARTLAR — SIŞIRAZI ENDÜSTRİYEL TASARIM
-   Her kart tipi farklı dolgu renkli (renk kodlu bloklar) oldu.
-   Beyaz boş sayfa yerine sarı / amber / lime / antrasit kartlar.
-   ------------------------------------------------------------ */
+/* SECTIONS + CARDS */
+.services,
+.fleet,
+.testimonials,
+.faq,
+.contact {
+  background: var(--lowbed-paper);
+}
 
+.features,
+.process,
+.coverage {
+  background: #f4f0e6;
+}
+
+.section-title h2 {
+  color: var(--lowbed-charcoal);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.section-title h2::after {
+  width: 64px;
+  height: 4px;
+  border-radius: 0;
+  background: var(--lowbed-yellow);
+}
+
+.section-title p {
+  color: #5b5b55;
+}
+
+.service-card,
+.feature-card,
+.fleet-card,
 .process-card,
 .testimonial-card,
 .coverage-card,
 .faq-item {
-  border-radius: var(--border-radius, 10px);
-  background: #ffffff;
-  border: 1px solid #fde68a;
-  box-shadow: 0 12px 30px rgba(202, 138, 4, 0.12);
+  background: #fff;
+  border: 1px solid #dfdacb;
+  border-radius: 4px;
+  box-shadow: 0 8px 18px rgba(23, 23, 23, 0.06);
 }
 
-/* Hizmet kartları — sırasıyla sarı / amber / lime / antrasit */
-.service-card {
-  background: linear-gradient(160deg, #fef9c3 0%, #fde68a 100%);
-  border: 2px solid #facc15;
-  border-radius: 14px;
-  box-shadow: 0 14px 34px rgba(202, 138, 4, 0.2);
-  color: #1c1917;
-}
-
-.service-card:nth-child(2n) {
-  background: linear-gradient(160deg, #fef3c7 0%, #fcd34d 100%);
-  border-color: #f59e0b;
-}
-
-.service-card:nth-child(3n) {
-  background: linear-gradient(160deg, #ecfccb 0%, #a3e635 100%);
-  border-color: #65a30d;
-}
-
-.service-card:nth-child(4n) {
-  background: linear-gradient(160deg, #292524 0%, #1c1917 100%);
-  border-color: #f59e0b;
-  color: #ffffff;
-}
-
-/* Feature kartları — TEK TİP sarı, vurgu yazılarda */
-.feature-card {
-  background: linear-gradient(160deg, #facc15 0%, #f59e0b 100%);
-  border: 2px solid #1c1917;
-  border-radius: 14px;
-  color: #1c1917;
-  box-shadow: 0 14px 34px rgba(217, 119, 6, 0.28);
-}
-
-.feature-card h3 {
-  color: #1c1917;
-}
-
-.feature-card p {
-  color: #44403c;
-}
-
-/* Fleet kartları — sarı + siyah şeritli endüstriyel */
-.fleet-card {
-  background: linear-gradient(180deg, #facc15 0%, #f59e0b 100%);
-  border: 3px solid #1c1917;
-  border-radius: 14px;
-  color: #1c1917;
-  box-shadow: 0 14px 34px rgba(202, 138, 4, 0.25);
-}
-
-.service-card h3,
-.feature-card h3,
-.fleet-card h3,
-.process-card h3,
-.testimonial-card h4 {
-  color: inherit;
-}
-
-.service-card p,
-.feature-card p,
-.process-card p,
-.testimonial-card p {
-  color: inherit;
-  opacity: 0.85;
-}
-
-.service-icon,
-.feature-icon {
-  background: rgba(255, 255, 255, 0.55);
-  color: #1c1917;
-  border: 1px solid rgba(28, 25, 23, 0.15);
-}
-
-.service-card:nth-child(4n) .service-icon,
-.feature-card .feature-icon {
-  background: #1c1917;
-  color: #facc15;
-}
-
-.service-card:hover,
-.feature-card:hover,
-.fleet-card:hover {
-  transform: translateY(-6px) rotate(-0.5deg);
-  box-shadow: 0 20px 45px rgba(28, 25, 23, 0.3);
-}
-
-/* --- BUTONLAR: sarı üzerine koyu yazı --- */
-.primary-btn {
-  border-radius: var(--border-radius-sm, 8px);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 800;
-  color: #1c1917 !important;
-  background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
-  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.35);
-}
-
-.primary-btn:hover {
-  color: #1c1917 !important;
-}
-
-/* --- SECTION BAŞLIKLARI --- */
-.section-title h2 {
-  color: #1c1917;
-  text-transform: uppercase;
-}
-
-.section-title span {
-  color: #d97706;
-  font-weight: 800;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.section-title h2::after {
-  background: linear-gradient(90deg, #facc15, #f59e0b);
-}
-
-.section-title p {
-  color: #57534e;
-}
-
-/* --- NAVBAR: sarı alt çizgi, koyu içerik --- */
-.navbar {
-  border-bottom: 3px solid #facc15;
-}
-
-/* --- FAQ --- */
-.faq-item summary {
-  color: #1c1917;
-}
-
-.faq-item p {
-  color: #57534e;
-}
-
-/* --- FOOTER: koyu antrasit, sarı vurgular --- */
-.footer {
-  background: linear-gradient(180deg, #1c1917 0%, #141210 100%);
-  border-top: 3px solid #f59e0b;
-}
-
-/* ============================================================
-   LOWBED — ÇARPIKI ENDÜSTRİYEL EK EFEKTLER
-   ============================================================ */
-
-/* --- HERO hazard şeritler (üst ve alt) --- */
-.hero-hazard-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 3;
-  height: 10px;
-}
-.hero-hazard-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 3;
-  height: 10px;
-}
-
-/* --- HERO dekoratif öğeler --- */
-.hero-deco {
-  position: absolute;
-  z-index: 1;
-  color: rgba(28, 25, 23, 0.18);
-  font-size: 7rem;
-  pointer-events: none;
-  user-select: none;
-  line-height: 1;
-}
-.hero-deco-ton {
-  top: 12%;
-  right: 8%;
-  font-size: 11rem;
-  opacity: 0.5;
-}
-.hero-deco-gear {
-  bottom: 18%;
-  right: 22%;
-  font-size: 4.5rem;
-  color: rgba(28, 25, 23, 0.28);
-}
-.hero-deco-box {
-  top: 22%;
-  left: 6%;
-  font-size: 3.5rem;
-  color: rgba(28, 25, 23, 0.25);
-}
-
-/* === Marquee bar lowbed override — sarı/siyah hazard kimlik === */
-.marquee-bar {
-  background: #1c1917;
-  border-top: 3px solid #facc15;
-  border-bottom: 3px solid #facc15;
-}
-.marquee-track span {
-  color: #fde68a;
-}
-
-/* === Stats bandına endüstriyel kesik köşe kartlar === */
-.stat-card-custom {
-  clip-path: polygon(
-    0 0,
-    calc(100% - 14px) 0,
-    100% 14px,
-    100% 100%,
-    14px 100%,
-    0 calc(100% - 14px)
-  );
-}
-
-/* === Bölüm başlık vurgusu: sol dikey sarı blok === */
-.section-title h2::before {
-  content: "";
-  position: absolute;
-  left: -1.4rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 2.2rem;
-  background: linear-gradient(180deg, #facc15, #f59e0b);
-}
-
-/* === Kartlara kesik köşe + hazard alt şerit === */
 .service-card,
 .feature-card,
 .fleet-card,
 .process-card {
-  clip-path: polygon(
-    0 0,
-    calc(100% - 16px) 0,
-    100% 16px,
-    100% 100%,
-    16px 100%,
-    0 calc(100% - 16px)
-  );
+  border-top: 4px solid var(--lowbed-yellow);
 }
 
-/* === Hizmet kartlarında hover: sarı çerçeve parlaması === */
 .service-card:hover,
 .feature-card:hover,
-.fleet-card:hover {
-  border-color: #facc15;
-  box-shadow:
-    0 0 0 3px rgba(250, 204, 21, 0.35),
-    0 20px 45px rgba(28, 25, 23, 0.3);
+.fleet-card:hover,
+.process-card:hover {
+  border-color: var(--lowbed-yellow);
+  border-top-color: var(--lowbed-yellow);
+  box-shadow: 0 15px 28px rgba(23, 23, 23, 0.12);
+  transform: translateY(-4px);
 }
 
-/* === Fleet kartına şeritli üst bant === */
-.fleet-card::before {
-  content: "";
-  display: block;
-  height: 8px;
-  margin: calc(-1 * var(--card-padding, 1.75rem))
-    calc(-1 * var(--card-padding, 1.75rem)) 1.25rem;
+.service-icon,
+.feature-icon,
+.fleet-icon {
+  background: var(--lowbed-yellow-soft);
+  color: var(--lowbed-charcoal);
+  border-radius: 4px;
+}
+
+.process-step-badge {
+  background: var(--lowbed-charcoal);
+  color: var(--lowbed-yellow);
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.faq-item[open] {
+  border-color: var(--lowbed-yellow);
+  box-shadow: 0 12px 24px rgba(23, 23, 23, 0.08);
+}
+
+.faq-item summary::after {
+  color: #bf8f00;
+}
+
+/* GALLERY + CONTACT + FOOTER */
+.gallery-slider {
+  border: 4px solid var(--lowbed-yellow);
+  border-radius: 4px;
+  box-shadow: 0 18px 36px rgba(23, 23, 23, 0.16);
+}
+
+.gallery-nav:hover,
+.gallery-dot.active {
+  background: var(--lowbed-yellow);
+}
+
+.contact-info-card {
+  border-left: 5px solid var(--lowbed-yellow) !important;
+}
+
+.cta {
+  background: linear-gradient(120deg, #171717 0%, #292929 100%);
+}
+
+.footer {
+  background: #111;
+  border-top: 4px solid var(--lowbed-yellow);
+}
+
+.footer h4::after,
+.footer-links a:hover,
+.footer-contact a:hover {
+  color: var(--lowbed-yellow);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 680px;
+    background-position: 62% center;
+  }
+
+  .hero-content h1 {
+    max-width: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   OPERASYON KATMANI
+   Bu seçiciler global varsayılanlardan daha güçlüdür; Lowbed kimliği korunur.
+   -------------------------------------------------------------------------- */
+.navbar.navbar {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.marquee-bar.marquee-bar {
+  background-color: #111;
   background-image: repeating-linear-gradient(
     -45deg,
-    #facc15 0,
-    #facc15 12px,
-    #1c1917 12px,
-    #1c1917 24px
+    rgba(246, 197, 21, 0.14) 0,
+    rgba(246, 197, 21, 0.14) 14px,
+    transparent 14px,
+    transparent 28px
   );
+  border-top: 3px solid var(--lowbed-yellow);
+  border-bottom: 3px solid var(--lowbed-yellow);
 }
 
-/* === Galeri çerçevesi: sarı kenarlık + köşe bantları === */
-.gallery-slider {
-  border: 3px solid #facc15;
-  box-shadow: 0 20px 50px rgba(202, 138, 4, 0.25);
+/* Eski koyu stats bandı: kesik köşe, sarı metrik ve teknik panel. */
+.stats.stats {
+  padding: 3.1rem 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 }
 
-/* === İletişim kartı: sarı sol şerit === */
-.contact-info-card {
-  border-left: 6px solid #facc15 !important;
+.stats.stats .stat-card-custom {
+  min-height: 144px;
+  background: #1e293b !important;
+  border: 1px solid #475569 !important;
+  border-radius: 0 !important;
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
 }
 
-/* === Buton hover: hazard şerit kaydırma efekti === */
-.primary-btn {
+.stats.stats .stat-card-custom::after {
+  background: var(--lowbed-yellow);
+}
+
+.stats.stats .stat-value {
+  color: var(--lowbed-yellow);
+  -webkit-text-fill-color: currentColor;
+}
+
+.stats.stats .stat-label {
+  color: #cbd5e1;
+}
+
+/* Teknik kart dili: sol kod çizgisi, koyu başlık ve kontrollü hover. */
+.services .service-card,
+.features .feature-card,
+.fleet .fleet-card,
+.process .process-card {
   position: relative;
   overflow: hidden;
-}
-.primary-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    -45deg,
-    rgba(28, 25, 23, 0.25) 0,
-    rgba(28, 25, 23, 0.25) 8px,
-    transparent 8px,
-    transparent 16px
-  );
-  transform: translateX(-120%);
-  transition: transform 0.5s ease;
-}
-.primary-btn:hover::after {
-  transform: translateX(120%);
+  background: #fffefa;
 }
 
-/* === Footer altına hazard şerit === */
-.footer::after {
+.services .service-card::before,
+.features .feature-card::before,
+.fleet .fleet-card::before,
+.process .process-card::before {
   content: "";
-  display: block;
-  height: 10px;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    #facc15 0,
-    #facc15 14px,
-    #1c1917 14px,
-    #1c1917 28px
-  );
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: var(--lowbed-yellow);
+}
+
+.fleet .fleet-card {
+  background: linear-gradient(145deg, #fffefa 0%, #f5f0df 100%);
+}
+
+.fleet .fleet-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd4bc;
+}
+
+.fleet .fleet-details p {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0;
+  color: #4c4c46;
+}
+
+.fleet .fleet-details strong {
+  color: #171717;
+}
+
+.process .process-card {
+  border-top-color: #171717;
+}
+
+.process .process-step-badge {
+  border: 2px solid var(--lowbed-yellow);
+}
+
+.gallery .gallery-caption {
+  background: linear-gradient(180deg, transparent, rgba(17, 17, 17, 0.94));
+}
+
+.gallery .gallery-caption::before {
+  background: var(--lowbed-yellow);
+}
+
+.contact .contact-icon {
+  background: var(--lowbed-yellow-soft);
+  color: #171717;
+}
+
+.footer.footer {
+  background: linear-gradient(150deg, #111 0%, #1d1d1d 100%);
 }

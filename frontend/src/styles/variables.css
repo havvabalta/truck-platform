@@ -1,39 +1,40 @@
 :root {
-  /* ============================================================
-     TEMPLATE (Fabrika) Varsayılanları
-     ------------------------------------------------------------
-     Bu değerler, aktif sitenin theme.js'inden gelen CSS
-     değişkenleriyle EZİLEBİLİR.
-     ============================================================ */   
-  --primary: var(--primary-color, #f97316);
-  --primary-dark: var(--primary-hover, #ea580c);
+  --primary-color: #b85c38;
+  --primary-hover: #984728;
+  --secondary-color: #1f2937;
+  --secondary-light-color: #344152;
+  --accent-color: #2f7a78;
+  --accent-hover: #256563;
 
-  --secondary: var(--secondary-color, #0f172a);
-  --secondary-light: var(--secondary-light-color, #1e293b);
+  --bg-main: #f7f4ef;
+  --bg-card: #fffdfa;
+  --bg-surface: #eee8df;
+  --text-color: #26313d;
+  --text-muted: #64707d;
+  --border-color: #ded6ca;
 
-  --accent: var(--accent-color, #22c55e);
+  --primary: var(--primary-color);
+  --primary-dark: var(--primary-hover);
+  --secondary: var(--secondary-color);
+  --secondary-light: var(--secondary-light-color);
+  --accent: var(--accent-color);
+  --background: var(--bg-main);
+  --surface: var(--bg-card);
+  --text: var(--text-color);
+  --text-light: var(--text-muted);
+  --border: var(--border-color);
 
-  --background: #f8fafc;
-  --surface: #ffffff;
-
-  --text: var(--text-color, #0f172a);
-  --text-light: #64748b;
-
-  --border: #e2e8f0;
-
-  --container: 1280px;
-
-  --section-space: 120px;
-
-  --radius-sm: 12px;
-  --radius-md: var(--border-radius, 20px);
-  --radius-lg: 28px;
-
-  --shadow: 0 15px 50px rgba(15, 23, 42, 0.08);
-
-  --transition: 0.3s ease;
-
-  --font-sans: var(--font-family, system-ui, -apple-system, sans-serif);
-  --font-main: var(--font-family, "Plus Jakarta Sans", system-ui, sans-serif);
-  --container-width: var(--container, 1280px);
+  --font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-main: var(--font-family);
+  --container-width: 1200px;
+  --section-padding-y: clamp(4rem, 8vw, 6.5rem);
+  --grid-gap: 1.5rem;
+  --card-padding: 1.5rem;
+  --border-radius: 16px;
+  --border-radius-sm: 10px;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 12px 28px rgba(15, 23, 42, 0.08);
+  --shadow: 0 20px 45px rgba(15, 23, 42, 0.1);
+  --transition: 180ms ease;
 }

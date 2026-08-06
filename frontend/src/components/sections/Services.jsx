@@ -16,7 +16,7 @@ export default function Services({ data }) {
           />
         </Reveal>
 
-<div className="services-grid">
+        <div className="services-grid adaptive-grid" data-layout={data.items.length >= 6 ? "three-columns" : "auto"}>
           {data.items.map((item, index) => (
             <Reveal key={index} delay={(index % 3) + 1}>
               <Card

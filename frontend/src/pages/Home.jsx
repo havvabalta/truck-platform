@@ -24,14 +24,15 @@ export default function Home() {
 
       <Hero data={siteConfig.hero} />
 
-      
       <Stats data={siteConfig.stats} />
-
-      <Marquee data={siteConfig.marquee} />
+     
       <Services data={siteConfig.services} />
+       
+       <Marquee data={siteConfig.marquee} />
 
       <Features data={siteConfig.features} />
       
+
        <Gallery data={{ gallery: siteConfig.media?.gallery }} />
 
       <Fleet data={siteConfig.fleet} />

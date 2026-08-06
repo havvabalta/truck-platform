@@ -13,24 +13,25 @@
 // ayrıca satır eklemeye gerek yoktur.
 // ============================================================
 
-
 // --- HAZIR SİTELER ---
-// import lowbedData from "../sites/lowbed/data";
-// import lowbedTheme from "../sites/lowbed/theme";
-// import "../sites/lowbed/theme.css";
+import lowbedData from "../sites/lowbed/data";
+import lowbedTheme from "../sites/lowbed/theme";
+import "../sites/lowbed/theme.css";
 // import tankerData from "../sites/tanker/data";
 // import tankerTheme from "../sites/tanker/theme";
 // import "../sites/tanker/theme.css";
 
-
 // --- AKTİF SİTE ---
-import cityDeliveryData from "../sites/city-delivery/data";
-import cityDeliveryTheme from "../sites/city-delivery/theme";
-import "../sites/city-delivery/theme.css"; // Aktif sitenin CSS override'ları
+//import cityDeliveryData from "../sites/city-delivery/data";
+//import cityDeliveryTheme from "../sites/city-delivery/theme";
+//import "../sites/city-delivery/theme.css"; // Aktif sitenin CSS override'ları
 
 // >>> AKTİF SİTE SEÇİMİ <<<
-const ACTIVE_DATA = cityDeliveryData;
-const ACTIVE_THEME = cityDeliveryTheme;
+//const ACTIVE_DATA = cityDeliveryData;
+//const ACTIVE_THEME = cityDeliveryTheme;
+
+const ACTIVE_DATA = lowbedData;
+const ACTIVE_THEME = lowbedTheme;
 
 const siteConfig = {
   ...ACTIVE_DATA,

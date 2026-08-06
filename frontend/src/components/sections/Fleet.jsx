@@ -16,7 +16,10 @@ export default function Fleet({ data }) {
           />
         </Reveal>
 
-        <div className="fleet-grid">
+        <div
+          className="fleet-grid adaptive-grid"
+          data-layout={data.items.length >= 6 ? "three-columns" : "auto"}
+        >
           {data.items.map((item, index) => (
             <Reveal key={index} delay={(index % 3) + 1}>
               <Card className="fleet-card">

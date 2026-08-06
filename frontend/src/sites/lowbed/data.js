@@ -1,8 +1,9 @@
-import heroImage from "../../assets/images/hero.jpg";
-import logo from "../../assets/icons/logo.png";
-import gallery1 from "../../assets/images/gallery1.jpg";
-import gallery2 from "../../assets/images/gallery2.jpg";
-import gallery3 from "../../assets/images/gallery3.jpg";
+import heroImage from "./assets/hero.jpg";
+import logo from "./assets/logo.svg";
+import gallery1 from "./assets/gallery1.jpg";
+import gallery2 from "./assets/gallery2.jpg";
+import gallery3 from "./assets/gallery3.jpg";
+import gallery4 from "./assets/gallery4.jpg";
 
 const data = {
   site: {
@@ -21,7 +22,7 @@ const data = {
 
   media: {
     logo: logo,
-    favicon: "/images/favicon.ico",
+    favicon: logo,
     heroImage: heroImage,
     aboutImage: gallery2,
     gallery: [
@@ -50,6 +51,7 @@ const data = {
   },
 
   hero: {
+    showHazard: true,
     badge: "🚜 Ağır Nakliyat & Lowbed Hizmetleri",
     title: "İş Makinesi ve Gabari Dışı Ağır Yük Taşımacılığı",
     subtitle:
@@ -105,7 +107,7 @@ const data = {
         title: "Liman & Rüzgar Tribünü Nakliyesi",
         description:
           "Gemi yükleri, kanat ve ağır jeneratörlerin özel izinli taşınması.",
-        image: heroImage,
+        image: gallery4,
       },
     ],
   },
@@ -258,7 +260,6 @@ const data = {
     address: "İstanbul",
   },
 
-  // CTA bölümü şu an kullanılmıyor (Home.jsx içinde null ise render edilmez).
   cta: null,
   ctaHidden: {
     title: "Ağır Yükünüz İçin Hemen Teklif Alın",

@@ -16,7 +16,10 @@ export default function Testimonials({ data }) {
           />
         </Reveal>
 
-<div className="testimonials-grid">
+        <div
+          className="testimonials-grid adaptive-grid"
+          data-layout={data.items.length >= 6 ? "three-columns" : "auto"}
+        >
           {data.items.map((item, index) => (
             <Reveal key={index} delay={index + 1}>
               <Card className="testimonial-card">
